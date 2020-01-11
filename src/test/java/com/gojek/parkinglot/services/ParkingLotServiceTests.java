@@ -27,10 +27,10 @@ import org.mockito.MockitoAnnotations;
  */
 public class ParkingLotServiceTests {
 
-  private ParkingLotServiceImpl parkingLotService = new ParkingLotServiceImpl();
-
   @Mock
   private ParkingLotDao parkingLotDao;
+
+  private ParkingLotServiceImpl parkingLotService;
 
   @Rule
   public ExpectedException exceptionRule = ExpectedException.none();
@@ -39,6 +39,7 @@ public class ParkingLotServiceTests {
   @Before
   public void initialize() {
     MockitoAnnotations.initMocks(this);
+    parkingLotService = new ParkingLotServiceImpl(parkingLotDao);
   }
 
   /**
@@ -48,19 +49,6 @@ public class ParkingLotServiceTests {
   public void createParkingLot_invokedOnce_expectsParkingLotCreated() {
     parkingLotService.createParkingLot(6);
     verify(parkingLotDao, Mockito.times(1)).create(Mockito.<ParkingLot>anyObject());
-  }
-
-  /**
-   * create invoked multiple times.
-   */
-  @Test
-  public void createParkingLot_invokedMultipleTimes_throwsParkingLotAlreadyCreatedException() {
-
-    exceptionRule.expect(ParkingLotException.class);
-    exceptionRule.expectMessage(ErrorCode.PARKING_LOT_ALREADY_EXISTS.getMessage());
-
-    parkingLotService.createParkingLot(6);
-    parkingLotService.createParkingLot(6);
   }
 
   /**

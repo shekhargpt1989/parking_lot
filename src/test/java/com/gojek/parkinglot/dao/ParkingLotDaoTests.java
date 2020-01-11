@@ -17,14 +17,14 @@ import org.junit.rules.ExpectedException;
  */
 public class ParkingLotDaoTests {
 
-  private ParkingLotDaoInMemoryImpl parkingLotDao = new ParkingLotDaoInMemoryImpl() ;
+  private ParkingLotDaoImpl parkingLotDao = new ParkingLotDaoImpl() ;
 
   @Rule
   public ExpectedException exceptionRule = ExpectedException.none();
 
   @Before
   public void initialize() {
-    this.parkingLotDao = new ParkingLotDaoInMemoryImpl();
+    this.parkingLotDao = new ParkingLotDaoImpl();
   }
 
 
@@ -45,7 +45,7 @@ public class ParkingLotDaoTests {
     }
 
     if(colour3 != null && reg3 != null) {
-      Slot slot3 = slots.get(3);
+      Slot slot3 = slots.get(2);
       final Car car3 = new Car(colour3, reg3);
       slot3.setCar(car3);
     }
@@ -126,8 +126,6 @@ public class ParkingLotDaoTests {
     final ParkingLot expectedParkingLot = buildParkingLotWithThreeSlots("White", "KA-01-HH-1234", null, null, "Blue", "KA-01-HH-1236");;
 
     Slot slot = new Slot(2);
-    final Car car = new Car(null, null);
-    slot.setCar(car);
 
     parkingLotDao.updateSlot(slot);
 
@@ -202,7 +200,7 @@ public class ParkingLotDaoTests {
    * get all filled slots when parking is empty.
    */
   @Test
-  public void getAllFilledSlots_noSlotsFilled_returnsList() {
+  public void getAllFilledSlots_noSlotsFilled_returnsNull() {
     final ParkingLot parkingLot = buildParkingLotWithThreeSlots(null, null, null, null, null, null);
     parkingLotDao.create(parkingLot);
 
@@ -255,6 +253,19 @@ public class ParkingLotDaoTests {
     Slot result = parkingLotDao.getNearestAvailableSlot();
 
     Assert.assertEquals(expectedSlot, result);
+  }
+
+  /**
+   * get nearest available slot when not available.
+   */
+  @Test
+  public void getNearestAvailableSlot_slotNotAvailable_returnsNearestSlot() {
+    final ParkingLot parkingLot = buildParkingLotWithThreeSlots("White", "KA-01-HH-1234", "Red", "KA-01-HH-1235", "Blue", "KA-01-HH-1236");
+    parkingLotDao.create(parkingLot);
+
+    Slot result = parkingLotDao.getNearestAvailableSlot();
+
+    Assert.assertNull(result);
   }
 
   /**

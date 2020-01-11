@@ -18,6 +18,11 @@ public class Slot implements Comparable<Slot> {
     this.id = id;
   }
 
+  public int getId() {
+    return id;
+  }
+
+
   public Car getCar() {
     return car;
   }
