@@ -12,10 +12,10 @@ public class RegistrationNumberUtil {
     String[] parts = registration.split("-");
 
     return parts.length == 4
-      && parts[0].length() == 2 && matchRegEx("[A-Za-z]*", parts[0])
+      && matchRegEx("[A-Za-z]*", parts[0])
       && matchRegEx("[0-9]*", parts[1])
       && matchRegEx("[A-Za-z]*", parts[2])
-      && parts[3].length() == 4 && matchRegEx("[0-9]*", parts[3]);
+      && matchRegEx("[0-9]*", parts[3]);
 
   }
 
