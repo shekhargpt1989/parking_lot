@@ -31,7 +31,7 @@ public class CarWithColourReqValidationStrategyTest {
     String[] input = {"White", "Red"};
     ValidationResult result = validationStrategy.validate(input);
     Assert.assertFalse(result.isStatus());
-    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_SLOTS, result.getErrorCode());
+    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_PARAMS, result.getErrorCode());
   }
 
 }

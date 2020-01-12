@@ -245,7 +245,7 @@ public class RequestHandlerTests {
   @Test
   public void execute_unsuccessfullyFindSlotWithRegDueToServiceEx_returnExpectedResponse() {
     when(validationStrategy.validate(any())).thenReturn(new ValidationResult(true,null));
-    doThrow(new ParkingLotException(ErrorCode.NO_SUCH_CARS_FOUND)).when(parkingLotService).slotIdsByColour("White");
+    doThrow(new ParkingLotException(ErrorCode.NO_SUCH_CARS_FOUND)).when(parkingLotService).slotIdByRegistration("KA-01-HH-3141");
 
     String result = requestHandler.execute("slot_number_for_registration_number KA-01-HH-3141");
     Assert.assertEquals(ErrorCode.NO_SUCH_CARS_FOUND.getMessage(), result);
@@ -257,9 +257,9 @@ public class RequestHandlerTests {
   @Test
   public void execute_successfulStatusWithResults_returnExpectedResponse() {
     when(validationStrategy.validate(any())).thenReturn(new ValidationResult(true,null));
-    String expectedRes = "Slot No.\tRegistration No.\tColor\n1\tKA-01-HH-1234\tWhite";
+    String expectedRes = "Slot No.    Registration No    Colour\n1           KA-01-HH-1234      White";
 
-    SlotStatus[] slotStatus = {new SlotStatus(1,"White", "KA-01-HH-123")};
+    SlotStatus[] slotStatus = {new SlotStatus(1,"White", "KA-01-HH-1234")};
 
     when(parkingLotService.status()).thenReturn(Arrays.asList(slotStatus));
 
@@ -273,7 +273,7 @@ public class RequestHandlerTests {
   @Test
   public void execute_successfulStatusWithEmptyResults_returnExpectedResponse() {
     when(validationStrategy.validate(any())).thenReturn(new ValidationResult(true,null));
-    String expectedRes = "Slot No.\tRegistration No.\tColor";
+    String expectedRes = "Slot No.    Registration No    Colour";
 
     when(parkingLotService.status()).thenReturn(new ArrayList<>());
 

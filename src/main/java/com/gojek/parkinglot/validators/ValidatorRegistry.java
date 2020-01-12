@@ -22,7 +22,7 @@ public class ValidatorRegistry {
     commandMap.put(Command.CREATE, new CreateReqValidationStrategy(1));
     commandMap.put(Command.PARK, new ParkReqValidationStrategy(2));
     commandMap.put(Command.LEAVE, new LeaveReqValidationStrategy(1));
-    commandMap.put(Command.STATUS, new StatusReqValidationStrategy(1));
+    commandMap.put(Command.STATUS, new StatusReqValidationStrategy(0));
     commandMap.put(Command.SLOT_OF_CAR_WITH_REG, new CarWithRegistrationReqValidationStrategy(1));
     commandMap.put(Command.SLOT_OF_CARS_WITH_COLOUR, new CarWithColourReqValidationStrategy(1));
     commandMap.put(Command.REG_OF_CARS_WITH_COLOUR, new CarWithColourReqValidationStrategy(1));

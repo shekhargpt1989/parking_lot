@@ -41,7 +41,7 @@ public class ParkReqValidationStrategyTest {
     String[] input = {"KA-01-HH-12345-h","White", "3"};
     ValidationResult result = validationStrategy.validate(input);
     Assert.assertFalse(result.isStatus());
-    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_SLOTS, result.getErrorCode());
+    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_PARAMS, result.getErrorCode());
   }
 
 }

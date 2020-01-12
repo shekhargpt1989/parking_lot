@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class StatusReqValidationStrategyTest {
 
-  private ValidationStrategy validationStrategy = new StatusReqValidationStrategy(1);
+  private ValidationStrategy validationStrategy = new StatusReqValidationStrategy(0);
 
   /**
    * Correct params.
@@ -31,7 +31,7 @@ public class StatusReqValidationStrategyTest {
     String[] input = {"6", "20"};
     ValidationResult result = validationStrategy.validate(input);
     Assert.assertFalse(result.isStatus());
-    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_SLOTS, result.getErrorCode());
+    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_PARAMS, result.getErrorCode());
   }
 
 }

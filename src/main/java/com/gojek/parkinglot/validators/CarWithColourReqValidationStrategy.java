@@ -13,6 +13,6 @@ public class CarWithColourReqValidationStrategy extends ValidationStrategy {
 
   @Override
   public ValidationResult validate(String[] parameters) {
-    return null;
+    return super.validateNumberOfParameters(parameters);
   }
 }

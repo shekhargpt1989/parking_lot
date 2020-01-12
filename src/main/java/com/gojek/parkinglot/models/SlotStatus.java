@@ -17,6 +17,18 @@ public class SlotStatus {
     this.registrationNumber = registrationNumber;
   }
 
+  public int getId() {
+    return id;
+  }
+
+  public String getColour() {
+    return colour;
+  }
+
+  public String getRegistrationNumber() {
+    return registrationNumber;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -35,4 +47,5 @@ public class SlotStatus {
   public int hashCode() {
     return Objects.hash(id, colour, registrationNumber);
   }
+
 }

@@ -17,7 +17,7 @@ public class CarWithRegistrationReqValidationStrategyTest {
    */
   @Test
   public void validate_correctParameter_ShouldReturnValidationStatusTrue() {
-    String[] input = {"KA-01-HH-12345"};
+    String[] input = {"KA-01-HH-1234"};
     ValidationResult result = validationStrategy.validate(input);
     Assert.assertTrue(result.isStatus());
   }
@@ -41,7 +41,7 @@ public class CarWithRegistrationReqValidationStrategyTest {
     String[] input = {"KA-01-HH-12345-h", "Red"};
     ValidationResult result = validationStrategy.validate(input);
     Assert.assertFalse(result.isStatus());
-    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_SLOTS, result.getErrorCode());
+    Assert.assertEquals(ErrorCode.INCORRECT_NUMBER_OF_PARAMS, result.getErrorCode());
   }
 
 }
