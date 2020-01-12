@@ -24,7 +24,7 @@ import org.mockito.MockitoAnnotations;
 /**
  * Request handler tests.
  */
-public class RequestHandlerTests {
+public class RequestHandlerTest {
 
   @Mock
   private ValidationStrategy validationStrategy;

@@ -15,7 +15,7 @@ import org.junit.rules.ExpectedException;
 /**
  * Unit tests for ParkingLotDao.
  */
-public class ParkingLotDaoTests {
+public class ParkingLotDaoTest {
 
   private ParkingLotDaoImpl parkingLotDao = new ParkingLotDaoImpl() ;
 

@@ -25,7 +25,7 @@ import org.mockito.MockitoAnnotations;
 /**
  * Unit test for ParkingLotService
  */
-public class ParkingLotServiceTests {
+public class ParkingLotServiceTest {
 
   @Mock
   private ParkingLotDao parkingLotDao;
